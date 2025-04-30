@@ -12,6 +12,7 @@ This can do these operations:
 - Insert a key-value pair into the hash table
 - Search for a value given a key
 - Delete a key-value pair from the hash table
+- Print the contents of the hash table
 
 ```c
 ht_hash_table *ht_new(void);
@@ -24,4 +25,5 @@ void ht_delete(ht_hash_table *ht, const char *key);
 
 ### Roadmap
 
-[ ] Implement `save` and `load`, preferably using a binary format
+- [ ] Implement `save` and `load`, preferably using a binary format
+- [ ] A TUI would be nice, or even a GUI is C... maybe...
