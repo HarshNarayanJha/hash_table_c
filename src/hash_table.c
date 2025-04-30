@@ -172,3 +172,21 @@ void ht_delete(ht_hash_table *ht, const char *key) {
     i++;
   }
 }
+
+void ht_print(ht_hash_table *ht) {
+  printf("{ ");
+  int comma = 0;
+  for (int i = 0; i < ht->size; i++) {
+    if (ht->items[i] != NULL && ht->items[i] != &HT_DELETED_ITEM) {
+      printf("%s=%s", ht->items[i]->key, ht->items[i]->value);
+      if (!comma) {
+        comma = 1;
+      }
+      printf(", ");
+    }
+  }
+  if (comma) {
+    printf("\b\b");
+  }
+  printf(" }\n");
+}
