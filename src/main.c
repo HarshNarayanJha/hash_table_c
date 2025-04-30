@@ -8,7 +8,6 @@ int main(void) {
   char key[100], value[100];
 
   for (int i = 0; i < 183; i++) {
-    printf("At %d\n", i);
     sprintf(key, "%d", i);
     sprintf(value, "%d", i * i);
     ht_insert(ht, key, value);
