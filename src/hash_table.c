@@ -16,7 +16,7 @@ static void ht_del_item(ht_item *i) {
   free(i);
 }
 
-ht_hash_table *ht_new() {
+ht_hash_table *ht_new(void) {
   ht_hash_table *ht = malloc(sizeof(ht_hash_table));
   ht->size          = 64;
   ht->count         = 0;

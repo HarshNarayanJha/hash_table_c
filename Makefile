@@ -1,14 +1,31 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -pedantic -std=c99
+CFLAGS = -Wall -Wextra -pedantic -std=c99 -D_POSIX_C_SOURCE=200809L
+SRCDIR = ./src
+BINDIR = ./bin
 
-bin:
-	mkdir -p ./bin
+SRCFILES = $(wildcard $(SRCDIR)/*.c)
 
-%: ./src/%.c bin
-	$(CC) $(CFLAGS) -o $@ $<
-	bin/$*
+OBJS = $(patsubst $(SRCDIR)/%.c, $(BINDIR)/%.o, $(SRCFILES))
 
-.PHONY: clean
+TARGET = $(BINDIR)/ht
+
+run: $(BINDIR) $(TARGET)
+	$(TARGET)
+
+$(BINDIR):
+	mkdir -p $(BINDIR)
+
+$(BINDIR)/%.o: $(SRCDIR)/%.c
+	$(CC) $(CFLAGS) -c -o $@ $<
+
+$(TARGET): $(OBJS)
+	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS)
+
+.PHONY: all clean run
+
+all: $(TARGET)
 
 clean:
-	rm -f ./bin/main
+	rm -f $(OBJS)
+	rm -f $(TARGET)
+	rmdir $(BINDIR)
