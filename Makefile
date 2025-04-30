@@ -19,7 +19,7 @@ $(BINDIR)/%.o: $(SRCDIR)/%.c
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 $(TARGET): $(OBJS)
-	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS)
+	$(CC) $(CFLAGS) -lm -o $(TARGET) $(OBJS)
 
 .PHONY: all clean run
 

@@ -2,7 +2,9 @@
 #define HASH_TABLE_H
 
 #ifdef __clang__
-#pragma clang diagnostic ignored "-Wempty-translation-unit" // bug? https://github.com/clangd/clangd/issues/2358
+#pragma clang diagnostic ignored                                               \
+    "-Wempty-translation-unit" // bug?
+                               // https://github.com/clangd/clangd/issues/2358
 #endif
 
 typedef struct {
@@ -18,5 +20,6 @@ typedef struct {
 
 ht_hash_table *ht_new(void);
 void ht_del_hash_table(ht_hash_table *ht);
+int ht_hash(const char *s, const int a, const int m);
 
 #endif
