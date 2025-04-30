@@ -1,4 +1,5 @@
 #include <math.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -14,6 +15,10 @@ static ht_item *ht_new_item(const char *k, const char *v) {
 }
 
 static void ht_del_item(ht_item *i) {
+  if (i == &HT_DELETED_ITEM) {
+    return;
+  }
+
   free(i->key);
   free(i->value);
   free(i);
